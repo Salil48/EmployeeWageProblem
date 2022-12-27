@@ -8,35 +8,44 @@ namespace EmployeeWageProblem
 {
     public class EmployeeWage
     {
-        public static void Case()
+        public static void InMonth()
         {
             const int IS_FULL_TIME = 1;
             const int IS_PART_TIME = 2;
             int EMP_RATE_PER_HOUR = 20;
+            const int NUM_OF_WORKING_DAYS = 20;
 
             int empHrs = 0;
             int empWage = 0;
+            int totalEmpWage = 0;
 
-            
-            Random random = new Random();
-            int empCheck = random.Next(3);
-
-            switch(empCheck)
+            for (int i = 0; i < NUM_OF_WORKING_DAYS; i++)
             {
-                case IS_FULL_TIME:
-                    empHrs = 8;
-                    break;
-                case IS_PART_TIME:
-                    empHrs = 4;
-                    break;
-                case 0:
-                    empHrs = 0; 
-                    break;
+
+                Random random = new Random();
+                int empCheck = random.Next(3);
+
+                switch (empCheck)
+                {
+                    case IS_FULL_TIME:
+                        empHrs = 8;
+                        break;
+                    case IS_PART_TIME:
+                        empHrs = 4;
+                        break;
+                    case 0:
+                        empHrs = 0;
+                        break;
+                }
+
+
+                empWage = empHrs * EMP_RATE_PER_HOUR;
+                totalEmpWage+= empWage;
+
+                Console.WriteLine("The Employee Wage: " + empWage);
             }
 
-            
-            empWage = empHrs * EMP_RATE_PER_HOUR;
-            Console.WriteLine("Emp Wage: " + empWage);
+            Console.WriteLine("Total Employee Wage: " + totalEmpWage);
         }
     }
 }
