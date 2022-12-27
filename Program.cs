@@ -6,7 +6,7 @@
         {
             Console.WriteLine("Welcome to Employee Wage Computation Program");
 
-            EmployeeWage.Case();
+            EmployeeWage.InMonth();
         }
     }
 }
