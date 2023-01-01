@@ -8,7 +8,7 @@ namespace EmployeeWageProblem
 {
     public class EmployeeWage
     {
-        public static void TotalWorkHrs()
+        public void CheckWage()
         {
             const int IS_FULL_TIME = 1;
             const int IS_PART_TIME = 2;
