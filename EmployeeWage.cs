@@ -8,45 +8,51 @@ namespace EmployeeWageProblem
 {
     public class EmployeeWage
     {
-        public void CheckWage()
+        public void Cal_Wage(string Company, int wagePerHour, int maxdays, int maxhours)
         {
-            const int IS_FULL_TIME = 1;
-            const int IS_PART_TIME = 2;
-            int EMP_RATE_PER_HOUR = 20;
-            const int NUM_OF_WORKING_DAYS = 20;
-            const int MAX_HRS_IN_MONTH = 100;
+            Console.WriteLine("\n Program for Calculating {0} Employee Wage !!\n", Company);
 
-            int empHrs = 0;
-            int empWage = 0;
-            int totalEmpHrs = 0;
-            int totalEmpWage = 0;
-            int totalWorkingDays = 0;
+            int workingHours = 8;
 
-            while(totalEmpHrs<= MAX_HRS_IN_MONTH && totalWorkingDays< NUM_OF_WORKING_DAYS)
+            int emphours = 0;
+            int days = 1;
+            int Totalwork = 0;
+            int Monthwork = 0;
+
+
+            while ((emphours <= maxhours) && (days <= maxdays))
             {
-                totalWorkingDays++;
-
                 Random random = new Random();
-                int empCheck = random.Next(3);
+                int atten = random.Next(3);
 
-                switch (empCheck)
+
+                if (atten == 1)
                 {
-                    case IS_FULL_TIME:
-                        empHrs = 8;
-                        break;
-                    case IS_PART_TIME:
-                        empHrs = 4;
-                        break;
-                    case 0:
-                        empHrs = 0;
-                        break;
+                    Totalwork = wagePerHour * 8;
+                    workingHours = 8;
                 }
+                else if (atten == 2)
+                {
+                    Totalwork = wagePerHour * 4;
+                    workingHours = 4;
+                }
+                else
+                {
+                    Totalwork = 0;
+                    workingHours = 0;
+                }
+                emphours += workingHours;
 
-                totalEmpHrs += empHrs;
-                Console.WriteLine("Day#: " + totalWorkingDays + "Emp Hrs : " + empHrs);
+                if (emphours <= maxhours)
+                {
+                    Monthwork += Totalwork;
+                    Console.WriteLine("day::{0} employee_hour::{1} empwage : {2}", days, emphours, Totalwork);
+                }
+                days++;
             }
-            totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-            Console.WriteLine("Total Employee Wage: " + totalEmpWage);
+            Console.WriteLine("TOTAL MONTH WORK: " + Monthwork);
+
+
         }
     }
 }
