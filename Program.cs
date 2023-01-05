@@ -15,13 +15,13 @@
             //obj.Cal_Wage("Dell", 20, 15, 80);
             //obj.Cal_Wage("Apple", 25, 10, 60);
 
-            EmployeeWage obj = new EmployeeWage("Dell", 20, 20, 80);
-            obj.Cal_Wage();
-            Console.WriteLine(obj.toString());
+            employeeWageCompanyArray obj = new employeeWageCompanyArray();
 
-            EmployeeWage obj1 = new EmployeeWage("Apple", 25, 10, 90);
-            obj1.Cal_Wage();
-            Console.WriteLine(obj1.toString());
+
+            obj.addCompanies("Dell", 20, 15, 90);
+
+            obj.addCompanies("Apple", 25, 10, 80);
+            obj.computeWage();
 
         }
     }
