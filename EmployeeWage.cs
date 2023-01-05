@@ -6,24 +6,34 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageProblem
 {
-    public class EmployeeWage
+    public class employeeWageCompanyArray
     {
-        private string Company;
-        private int wagePerHour;
-        private int maxdays;
-        private int maxhours;
-        private int Monthwork;
-        public EmployeeWage(string Company, int wagePerHour, int maxdays, int maxhours)
+        private Array[] CompanywageArray;
+        private int noOfCompany = 0;
+        public employeeWageCompanyArray()
         {
-            this.Company = Company;
-            this.wagePerHour = wagePerHour;
-            this.maxdays = maxdays;
-            this.maxhours = maxhours;
+            this.CompanywageArray = new Array[5];
+        }
+        public void addCompanies(string Company, int wagePerHour, int maxdays, int maxhours)
+        {
+            CompanywageArray[noOfCompany] = new Array(Company, wagePerHour, maxdays, maxhours);
+            noOfCompany++;
         }
 
-        public void Cal_Wage()
+        public void computeWage()
         {
-            Console.WriteLine("\n Program for Calculating {0} Employee Wage !!\n", Company);
+            for (int i = 0; i < noOfCompany; i++)
+            {
+                CompanywageArray[i].setEmpWage(computeWage(CompanywageArray[i]));
+                Console.WriteLine(CompanywageArray[i].toString());
+
+            }
+        }
+
+
+        private int computeWage(Array array)
+        {
+            Console.WriteLine("\n Program for Calculating {0} Employee Wage !!\n", array.Company);
 
             int workingHours = 8;
 
@@ -31,9 +41,7 @@ namespace EmployeeWageProblem
             int days = 1;
             int Totalwork = 0;
 
-
-
-            while ((emphours <= this.maxhours) && (days <= this.maxdays))
+            while ((emphours <= array.maxhours) && (days <= array.maxdays))
             {
                 Random random = new Random();
                 int atten = random.Next(3);
@@ -41,12 +49,12 @@ namespace EmployeeWageProblem
 
                 if (atten == 1)
                 {
-                    Totalwork = this.wagePerHour * 8;
+                    Totalwork = array.wagePerHour * 8;
                     workingHours = 8;
                 }
                 else if (atten == 2)
                 {
-                    Totalwork = this.wagePerHour * 4;
+                    Totalwork = array.wagePerHour * 4;
                     workingHours = 4;
                 }
                 else
@@ -56,22 +64,20 @@ namespace EmployeeWageProblem
                 }
                 emphours += workingHours;
 
-                if (emphours <= maxhours)
+                if (emphours <= array.maxhours)
                 {
-                    this.Monthwork += Totalwork;
+                    array.Monthwork += Totalwork;
                     Console.WriteLine("day::{0} employee_hour::{1} empwage : {2}", days, emphours, Totalwork);
                 }
                 days++;
             }
-            Console.WriteLine("TOTAL MONTH WORK: " + this.Monthwork);
-        }
-
-        public string toString()
-        {
-            return "the company : " + this.Company + " total work is :  " + this.Monthwork;
+            return array.Monthwork;
         }
     }
 }
+
+
+
 
 
 
