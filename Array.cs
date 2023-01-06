@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageProblem
 {
-    public class Array
+    public class Array : IComputeEmpWage
     {
         public string Company;
         public int wagePerHour;
