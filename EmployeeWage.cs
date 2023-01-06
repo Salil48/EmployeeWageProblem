@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageProblem
 {
-    public class employeeWageCompanyArray
+    public class EmployeeWageCompanyArray
     {
         private Array[] CompanywageArray;
         private int noOfCompany = 0;
-        public employeeWageCompanyArray()
+        public EmployeeWageCompanyArray()
         {
             this.CompanywageArray = new Array[5];
         }
